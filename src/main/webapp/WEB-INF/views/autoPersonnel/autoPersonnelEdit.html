@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit auto personnel</title>
+</head>
+<body style="background-color:#37D8DE;">
+<form th:method="POST"
+      th:action="@{/carPark/autoPersonnelTable/{id}/autoPersonnelEdit(id=${autoPersonnel.getId()})}"
+      th:object="${autoPersonnel}">
+
+    <label for="lastName">Last ame: </label>
+    <input type="text" th:field="*{lastName}" id="lastName"/>
+    <div style="color: red" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last name error</div>
+    <br/>
+
+    <label for="firstName">First name: </label>
+    <input type="text" th:field="*{firstName}" id="firstName"/>
+    <div style="color: red" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First name error</div>
+    <br/>
+
+    <label for="fatherName">Father name: </label>
+    <input type="text" th:field="*{fatherName}" id="fatherName"/>
+    <div style="color: red" th:if="${#fields.hasErrors('fatherName')}" th:errors="*{fatherName}">Father name error</div>
+    <br/>
+
+    <input type="submit" value="Update"/>
+
+</form>
+<br/>
+
+<a th:href="@{/carPark/autoPersonnelTable/{id}/autoPersonnelEdit(id=${autoPersonnel.getId()})}">Reset</a>
+<br/>
+<br/>
+
+<a th:href="@{/carPark/autoPersonnelTable/{id}(id=${autoPersonnel.getId()})}">Back</a>
+</body>
+</html>

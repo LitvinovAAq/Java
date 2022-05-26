@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new auto</title>
+</head>
+<body style="background-color:#37D8DE;">
+<form th:method="POST" th:action="@{/carPark/autoTable}" th:object="${auto}">
+    <label for="number">Number: </label>
+    <input type="text" th:field="*{num}" id="number" />
+    <div style="color: red" th:if="${#fields.hasErrors('num')}" th:errors="*{num}">Number error</div>
+    <br/>
+
+    <label for="color">Color: </label>
+    <input type="text" th:field="*{color}" id="color" />
+    <div style="color: red" th:if="${#fields.hasErrors('color')}" th:errors="*{color}">Color error</div>
+    <br/>
+
+    <label for="mark">Mark: </label>
+    <input type="text" th:field="*{mark}" id="mark" />
+    <div style="color: red" th:if="${#fields.hasErrors('mark')}" th:errors="*{mark}">Mark error</div>
+    <br/>
+    <select th:name="autoPersonnel">
+        <option value="">Select auto personnel</option>
+        <option
+                th:each="ap : ${autoPersonnels}"
+                th:value="${ap.getId()}"
+                th:text="${ap.getLastName()}">
+        </option>
+    </select>
+    <br/>
+    <input type="submit" value="Create"/>
+</form>
+<br/>
+
+<a href="/carPark/autoTable/newAuto">Reset</a>
+<br/>
+<br/>
+
+
+<a href="/carPark/autoTable">Back</a>
+</body>
+</html>

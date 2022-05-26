@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new auto personnel</title>
+</head>
+<body style="background-color:#37D8DE;">
+<form th:method="POST" th:action="@{/carPark/autoPersonnelTable}" th:object="${autoPersonnel}">
+    <label for="lastName">Last name: </label>
+    <input type="text" th:field="*{lastName}" id="lastName" />
+    <div style="color: red" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last name error</div>
+    <br/>
+
+    <label for="firstName">First name: </label>
+    <input type="text" th:field="*{firstName}" id="firstName" />
+    <div style="color: red" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First name error</div>
+    <br/>
+
+    <label for="fatherName">Father name: </label>
+    <input type="text" th:field="*{fatherName}" id="fatherName" />
+    <div style="color: red" th:if="${#fields.hasErrors('fatherName')}" th:errors="*{fatherName}">Father name error</div>
+    <br/>
+
+    <input type="submit" value="Create"/>
+</form>
+<br/>
+
+<a href="/carPark/newAutoPersonnel">Reset</a>
+<br/>
+<br/>
+
+<a href="/carPark/autoPersonnelTable">Back</a>
+</body>
+</html>

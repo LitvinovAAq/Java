@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Route</title>
+</head>
+<body style="background-color:#37D8DE;">
+
+<span th:text="${routes.getName()}">VALUE</span>
+<br/>
+
+Id: <span th:text="${routes.getId()}">VALUE</span>
+<br/>
+
+<a th:href="@{/carPark/routesTable/{id}/routesEdit(id=${routes.getId()})}">Update</a>
+<br/>
+<br/>
+
+<form th:method="POST" th:action="@{/carPark/routesTable/{id}(id=${routes.getId()})}">
+    <input type="submit" value="Delete"/>
+</form>
+<br/>
+
+<a href="/carPark/routesTable">Back</a>
+
+</body>
+</html>

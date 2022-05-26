@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit route</title>
+</head>
+<body style="background-color:#37D8DE;">
+<form th:method="POST" th:action="@{/carPark/routesTable/{id}/routesEdit(id=${routes.getId()})}" th:object="${routes}">
+    <label for="name">Name: </label>
+    <input type="text" th:field="*{name}" id="name"/>
+    <br/>
+    <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Route name error</div>
+
+    <input type="submit" value="Update"/>
+</form>
+<br/>
+
+<a th:href="@{/carPark/routesTable/{id}/routesEdit(id=${routes.getId()})}">Reset</a>
+<br/>
+<br/>
+
+<a th:href="@{/carPark/routesTable/{id}(id=${routes.getId()})}">Back</a>
+
+</body>
+</html>

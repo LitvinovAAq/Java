@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new route</title>
+</head>
+<body style="background-color:#37D8DE;">
+
+<form th:method="POST" th:action="@{/carPark/routesTable}" th:object="${routes}">
+
+    <label for="name">Name: </label>
+    <input type="text" th:field="*{name}" id="name" />
+    <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Route name error</div>
+    <br/>
+
+    <input type="submit" value="Create"/>
+
+</form>
+<br/>
+
+<a href="/carPark/newRoutes">Reset</a>
+<br/>
+<br/>
+
+<a href="/carPark/routesTable">Back</a>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Routes table</title>
+</head>
+<body style="background-color:#37D8DE;">
+
+<font size="+2">
+    <nav ><a style="color: green" href="/carPark/journalTable">Journal table</a> | <a style="color: green" href="/carPark/autoTable">Auto table</a> |
+        <a style="color: green" href="/carPark/autoPersonnelTable">Auto personnel table</a> | <a style="color: green" href="/carPark/routesTable">Routes table</a></nav>
+</font>
+
+<h2>Routes</h2>
+
+<table border="1" cellpadding="10" bordercolor="black">
+    <tr bgcolor="#F2D03A">
+        <th>id</th>
+        <th>Name</th>
+    </tr>
+    <tr th:each = "route: ${routes}" bgcolor="#ffebcd">
+        <td>
+            <a th:href="@{/carPark/routesTable/{id}(id=${route.getId()})}" th:text="${route.id}">VALUE</a>
+        </td>
+        <td th:text="${route.name}">VALUE</td>
+    </tr>
+</table>
+<br/>
+
+<a href="/carPark/newRoutes">Add new route</a>
+<br/>
+<br/>
+
+<form th:method = "POST" th:action="@{/carPark/routesTable/byJournalId}">
+
+    <select th:name="id">
+        <option value="0">0</option>
+        <option
+                th:each="j : ${journals}"
+                th:value="${j.getId()}"
+                th:text="${j.getId()}">
+        </option>
+    </select>
+    <input type="submit" value="Show routes by journal ID"/>
+</form>
+<br/>
+
+<form th:method = "POST" th:action="@{/carPark/routesTable/byAutoId}">
+    <select th:name="id">
+        <option value="0">0</option>
+        <option
+                th:each="a : ${autos}"
+                th:value="${a.getId()}"
+                th:text="${a.getId()}">
+        </option>
+    </select>
+    <input type="submit" value="Show routes by auto ID"/>
+</form>
+<br/>
+
+<a href="/carPark/routesTable">Reset</a>
+<br/>
+<br/>
+
+<a href="/">Back to main page</a>
+</body>
+</html>

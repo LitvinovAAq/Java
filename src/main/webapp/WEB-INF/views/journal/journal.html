@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Journal</title>
+</head>
+<body style="background-color:#37D8DE;">
+Id: <span th:text="${journal.getId()}">VALUE</span>
+<br/>
+Time out: <span th:text="${journal.getTime_out()}">VALUE</span>
+<br/>
+Time in: <span th:text="${journal.getTime_in()}">VALUE</span>
+<br/>
+Auto: <span th:text="${journal.getAuto()}">VALUE</span>
+<br/>
+Route: <span th:text="${journal.getRoutes()}">VALUE</span>
+<br/>
+
+<a th:href="@{/carPark/journalTable/{id}/journalEdit(id=${journal.getId()})}">Update</a>
+<br/>
+<br/>
+
+<form th:method="POST" th:action="@{/carPark/journalTable/{id}(id=${journal.getId()})}">
+    <input type="submit" value="Delete"/>
+</form>
+<br/>
+
+<a href="/carPark/journalTable">Back</a>
+</body>
+</html>

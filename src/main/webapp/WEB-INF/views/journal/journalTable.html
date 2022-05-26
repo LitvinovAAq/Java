@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Journal table</title>
+</head>
+
+<body style="background-color:#37D8DE;" >
+
+<font size="+2">
+    <nav ><a style="color: green" href="/carPark/journalTable">Journal table</a> | <a style="color: green" href="/carPark/autoTable">Auto table</a> |
+        <a style="color: green" href="/carPark/autoPersonnelTable">Auto personnel table</a> | <a style="color: green" href="/carPark/routesTable">Routes table</a></nav>
+</font>
+
+<h2>Journal</h2>
+
+<table border="1" cellpadding="10" bordercolor="black">
+    <tr bgcolor="#F2D03A">
+        <th>id</th>
+        <th>Time in</th>
+        <th>Time out</th>
+        <th>Auto id</th>
+        <th>Routes id</th>
+    </tr>
+    <tr th:each = "journal: ${journals}" bgcolor="#ffebcd">
+        <td>
+            <a th:href="@{/carPark/journalTable/{id}(id=${journal.getId()})}" th:text="${journal.id}">VALUE</a>
+        </td>
+        <td th:text="${journal.time_in}">VALUE</td>
+        <td th:text="${journal.time_out}">VALUE</td>
+        <td th:text="${journal.auto}">VALUE</td>
+        <td th:text="${journal.routes}">VALUE</td>
+    </tr>
+</table>
+<br/>
+
+<a href="/carPark/journalTable/newJournal">Add new journal</a>
+<br/>
+<br/>
+
+<a href="/">Back to main page</a>
+</body>
+</html>

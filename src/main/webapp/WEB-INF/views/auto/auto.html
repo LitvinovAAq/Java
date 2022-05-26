@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Auto</title>
+</head>
+<body style="background-color:#37D8DE;">
+Number: <span th:text="${auto.getNum()}">VALUE</span>
+<br/>
+Color: <span th:text="${auto.getColor()}">VALUE</span>
+<br/>
+Mark: <span th:text="${auto.getMark()}">VALUE</span>
+<br/>
+Auto personnel: <span th:text="${auto.getAutoPersonnel()}">VALUE</span>
+<br/>
+<a th:href="@{/carPark/autoTable/{id}/autoEdit(id=${auto.getId()})}">Update</a>
+<br/>
+<br/>
+<form th:method="POST" th:action="@{/carPark/autoTable/{id}(id=${auto.getId()})}">
+    <input type="submit" value="Delete"/>
+</form>
+<br/>
+
+<a href="/carPark/autoTable">Back</a>
+</body>
+</html>

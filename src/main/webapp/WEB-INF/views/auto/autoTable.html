@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Auto table</title>
+</head>
+<body style="background-color:#37D8DE;">
+
+<font size="+2">
+    <nav ><a style="color: green" href="/carPark/journalTable">Journal table</a> | <a style="color: green" href="/carPark/autoTable">Auto table</a> |
+        <a style="color: green" href="/carPark/autoPersonnelTable">Auto personnel table</a> | <a style="color: green" href="/carPark/routesTable">Routes table</a></nav>
+</font>
+
+<h2>Auto</h2>
+
+<table border="1" cellpadding="10" bordercolor="black">
+    <tr bgcolor="#F2D03A">
+        <th>id</th>
+        <th>Color</th>
+        <th>Mark</th>
+        <th>Number</th>
+        <th>Auto personnel</th>
+    </tr>
+    <tr th:each = "auto: ${autos}" bgcolor="#ffebcd">
+        <td>
+            <a th:href="@{/carPark/autoTable/{id}(id=${auto.getId()})}" th:text="${auto.id}">VALUE</a>
+        </td>
+        <td th:text="${auto.color}">VALUE</td>
+        <td th:text="${auto.mark}">VALUE</td>
+        <td th:text="${auto.num}">VALUE</td>
+        <td th:text="${auto.autoPersonnel}">VALUE</td>
+    </tr>
+</table>
+<br/>
+
+<a href="/carPark/autoTable/newAuto">Add new auto</a>
+<br/>
+<br/>
+
+<form th:method = "POST" th:action="@{/carPark/autoTable/byJournalId}">
+<!--    <input type="text" th:name="id"/>-->
+    <select th:name="id">
+        <option value="0">0</option>
+        <option
+                th:each="j : ${journals}"
+                th:value="${j.getId()}"
+                th:text="${j.getId()}">
+        </option>
+    </select>
+    <input type="submit" value="Show auto by journal ID"/>
+</form>
+<br/>
+
+<a href="/carPark/autoTable">Reset</a>
+<br/>
+<br/>
+
+<a href="/">Back to main page</a>
+
+</body>
+</html>

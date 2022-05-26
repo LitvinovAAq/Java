@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Auto personnel table</title>
+</head>
+<body style="background-color:#37D8DE;">
+
+<font size="+2">
+    <nav ><a style="color: green" href="/carPark/journalTable">Journal table</a> | <a style="color: green" href="/carPark/autoTable">Auto table</a> |
+        <a style="color: green" href="/carPark/autoPersonnelTable">Auto personnel table</a> | <a style="color: green" href="/carPark/routesTable">Routes table</a></nav>
+</font>
+
+<h2>Auto personnel</h2>
+
+<table border="1" cellpadding="10" bordercolor="black">
+    <tr bgcolor="#F2D03A">
+        <th>id</th>
+        <th>Last name</th>
+        <th>First name</th>
+        <th>Father name</th>
+    </tr>
+    <tr th:each = "autoPersonnel: ${autoPersonnels}" bgcolor="#ffebcd">
+        <td>
+            <a th:href="@{/carPark/autoPersonnelTable/{id}(id=${autoPersonnel.getId()})}" th:text="${autoPersonnel.id}">VALUE</a>
+        </td>
+        <td th:text="${autoPersonnel.LastName}">VALUE</td>
+        <td th:text="${autoPersonnel.firstName}">VALUE</td>
+        <td th:text="${autoPersonnel.fatherName}">VALUE</td>
+
+    </tr>
+</table>
+<br/>
+
+<a href="/carPark/newAutoPersonnel">Add new auto personnel</a>
+<br/>
+<br/>
+
+<form th:method = "POST" th:action="@{/carPark/autoPersonnelTable/byJournalId}">
+<!--    <input type="number" th:name="id"/>-->
+    <select th:name="id">
+        <option value="0">0</option>
+        <option
+                th:each="j : ${journals}"
+                th:value="${j.getId()}"
+                th:text="${j.getId()}">
+        </option>
+    </select>
+    <input type="submit" value="Show auto personnel by journal ID"/>
+</form>
+<br/>
+
+<form th:method = "POST" th:action="@{/carPark/autoPersonnelTable/byRouteId}">
+    <select th:name="id">
+        <option value="0">0</option>
+        <option
+                th:each="r : ${routes}"
+                th:value="${r.getId()}"
+                th:text="${r.getId()}">
+        </option>
+    </select>
+    <input type="submit" value="Show auto personnel by route ID"/>
+</form>
+<br/>
+
+<a href="/carPark/autoPersonnelTable">Reset</a>
+<br/>
+<br/>
+
+<a href="/">Back to main page</a>
+</body>
+</html>
