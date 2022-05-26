@@ -37,28 +37,4 @@ public class Application {
     public PasswordEncoder passwordEncoder() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
-//    @Autowired
-//    private PasswordEncoder passwordEncoder;
-
-//    @Bean
-//    public CommandLineRunner test(RoutesService routesService, AutoService autoService,
-//                                  JournalService journalService, AutoPersonnelService autoPersonnelService){
-//        return args -> {
-//            Optional<User> optionalUser = Optional.ofNullable(userRepository.findUserByUsername("admin"));
-//            if(!optionalUser.isPresent()) {
-//                Set<Role> roles = new HashSet<>();
-//                roles.add(Role.USER);
-//                roles.add(Role.ADMIN);
-//                User user = new User();
-//                user.setActive(true);
-//                user.setUsername("admin");
-//                user.setPassword(passwordEncoder.encode("admin"));
-//                user.setActive(true);
-//                user.setRoles(roles);
-//                userRepository.save(user);
-//            }
-//        };
-//    }
-
-
 }
