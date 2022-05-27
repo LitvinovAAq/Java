@@ -26,9 +26,13 @@ public class Journal {
     @Column(name = "id")
     private Integer id;
 
-    private Timestamp time_out;
+    @NotNull()
+    @DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm")
+    private LocalDateTime time_out;
 
-    private Timestamp time_in;
+    @NotNull()
+    @DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm")
+    private LocalDateTime time_in;
 
     @OneToOne()
     @NotNull(message = "Error: This field must be filled in")

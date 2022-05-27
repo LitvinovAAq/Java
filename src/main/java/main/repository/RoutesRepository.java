@@ -14,5 +14,4 @@ public interface RoutesRepository extends CrudRepository<Routes, Integer> {
 
     @Query("SELECT r FROM Routes r JOIN Journal j ON r.id = j.routes.id JOIN Auto a on a.id = j.auto.id WHERE a.id = ?1")
     List<Routes> findRouteByAutoId(int id);
-
 }

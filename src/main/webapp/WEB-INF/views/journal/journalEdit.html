@@ -7,13 +7,13 @@
 <body style="background-color:#37D8DE;">
 <form th:method="POST" th:action="@{/carPark/journalTable/{id}/journalEdit(id=${journal.getId()})}" th:object="${journal}">
     <label for="timeOut">Time out: </label>
-    <input type="text" th:field="*{time_out}" id="timeOut" />
-    <div style="color: red" th:if="${#fields.hasErrors('time_out')}" >Error: Invalid date and time(format must be yyyy-mm-dd hh:mm:ss[.fffffffff])</div>
+    <input type="datetime-local" th:field="*{time_out}" id="timeOut" />
+    <div style="color: red" th:if="${#fields.hasErrors('time_out')}" >Error: Invalid date and time</div>
     <br/>
 
     <label for="timeIn">Time in: </label>
-    <input type="text" th:field="*{time_in}" id="timeIn" />
-    <div style="color: red" th:if="${#fields.hasErrors('time_in')}">Error: Invalid date and time(format must be yyyy-mm-dd hh:mm:ss[.fffffffff])</div>
+    <input type="datetime-local" th:field="*{time_in}" id="timeIn" />
+    <div style="color: red" th:if="${#fields.hasErrors('time_in')}">Error: Invalid date and time</div>
     <br/>
 
     <select th:name="auto">
